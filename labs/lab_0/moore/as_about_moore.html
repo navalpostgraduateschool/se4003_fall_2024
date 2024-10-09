@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Me</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 0;
+            text-align: center;
+        }
+        section {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #333;
+        }
+        p {
+            font-size: 18px;
+            color: #555;
+        }
+        #funFact {
+            margin-top: 20px;
+            font-size: 20px;
+            color: #007BFF;
+            cursor: pointer;
+        }
+        #factOutput {
+            font-style: italic;
+            margin-top: 10px;
+            color: #FF5733;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>About Me</h1>
+</header>
+
+<section>
+    <h2>Hello, I'm Your Instructor!</h2>
+    <p>Welcome to the software engineering course! I'm passionate about coding, teaching, and sharing knowledge. </p>
+
+    <h3>Fun Facts:</h3>
+    <ul>
+        <li>I have a three-legged cat.</li>
+        <li>I have a four-legged dog.</li>
+        <li>I have four, two-legged children.</li>
+    </ul>
+
+    <div id="funFact">Click here for a random fun fact!</div>
+    <div id="factOutput"></div>
+</section>
+
+<script>
+    const funFacts = [
+        "Cats can jump up to six times their length!",
+        "Dogs can understand up to 250 words and gestures.",
+        "Children are natural-born coders if given the right tools!",
+        "Teaching is one of the best ways to learn more."
+    ];
+
+    document.getElementById("funFact").addEventListener("click", function() {
+        const randomFact = funFacts[Math.floor(Math.random() * funFacts.length)];
+        document.getElementById("factOutput").textContent = randomFact;
+    });
+</script>
+
+</body>
+</html>
