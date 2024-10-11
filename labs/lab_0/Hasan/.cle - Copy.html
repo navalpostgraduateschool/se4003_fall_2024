@@ -1,0 +1,142 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Naval Postgraduate School Collaborative Portal</title>
+    <link href="https://cle.nps.edu/library/skin/nps/tool.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        main {
+            flex: 1;
+        }
+        .login-button {
+            max-width: 250px;
+            margin-bottom: 20px;
+        }
+        .footer-links a {
+            color: #ffffff;
+            text-decoration: none;
+            margin-right: 15px;
+        }
+        .footer-links a:hover {
+            text-decoration: underline;
+            color: rgb(255, 213, 3);
+        }
+        .footer-details {
+            display: flex;
+            justify-content: space-between;
+        }
+        #npssplash .btn-nps-blue {
+            background-color: rgb(0, 69, 124); /* NPS Blue */
+            border-color: rgb(0, 69, 124);
+        }
+        #npssplash .btn-nps-yellow {
+            background-color: rgb(255, 213, 3); /* NPS Yellow */
+            border-color: rgb(255, 213, 3);
+            color: black !important;
+        }
+        #npssplash .btn-login {
+            padding: 1rem 1rem; /* Larger padding for bigger buttons */
+            font-size: 1.25rem; /* Larger font size */
+            font-weight: 600;
+            color: white; /* White text color */
+            width: 86%; /* Full width */
+            margin: 0 0 20px;
+            font-family: Arial;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5); /* Big shadow for emphasis */
+        }
+        #npssplash .btn-login small {
+            font-weight: 400;
+        }
+        #npssplash .btn-login:hover {
+            opacity: 0.6; /* Slight opacity on hover for visual effect */
+            text-decoration: none;
+        }
+        #npssplash .centered-content {
+            min-height: 30vh; /* Minimum height to take full viewport */
+            display: flex; /* Enable flexbox */
+            justify-content: center; /* Center horizontally */
+            align-items: center; /* Center vertically */
+        }
+    </style>
+</head>
+<body>
+    <header class="py-3" id="xlogin-logo">
+        <div class="container d-flex justify-content-between align-items-center">
+            <span class="text-white fs-4">
+              <img src="https://cle.nps.edu/library/skin/nps/images/logo.svg" alt="Naval Postgraduate School CLE" style="width: 300px" class="img-fluid">
+            </span>
+        </div>
+    </header>
+
+    <main id="npssplash"class="container my-5">
+        <div class="row">
+            <div class="col-12 col-md-2 align-middle pt-3 text-center" style="background-color: #536573">
+              <div class="row centered-content">
+                <div class="col-12 mb-3"> <!-- Use full width for stacking -->
+                  <a href="/sakai-login-tool/container" class="btn btn-login btn-nps-yellow" role="button">
+                    NPS Users<br>
+                    <small>click here to login</small>
+                  </a>
+                <div class="col-12 mb-3"> <!-- Use full width for stacking -->
+                  <a href="/portal/xlogin" class="btn btn-login btn-nps-blue" role="button">
+                    Non-NPS Users<br>
+                    <small>click here to login</small>
+                  </a>
+                </div>
+              </div>
+        </div>
+
+<!--
+                <a href="/sakai-login-tool/container" class="d-block mb-3">
+                    <img src="https://cle.nps.edu/maintenance/NPSloginButton.gif" alt="NPS Users click here to login" class="img-fluid">
+                </a>
+                <a href="/portal/xlogin" class="d-block">
+                    <img src="https://cle.nps.edu/maintenance/nonNPSloginButton.gif" alt="Non-NPS Users click here to login" class="img-fluid">
+                </a>
+-->
+            </div>
+            <div class="col-12 col-md-8 mx-5">
+                <h2>Welcome to the Naval Postgraduate School Collaborative Learning &amp; Research Portal</h2>
+                <p class="lead">
+            
+<div class="welcomeContent">
+<p><strong>NPS users:</strong>&nbsp;NPS staff, students, and faculty can login using their NPS username and password&nbsp;by clicking on the top button to the left to login. Please note that this is <strong><u>NOT</u></strong> your full @nps.edu email address, JUST your username.</p>
+
+<p><strong>Non-NPS users:</strong>&nbsp;those who login with their email address as their username, which includes external partners and guests, please click on bottom button to the left to login.</p>
+
+<p>The Naval Postgraduate School Collaborative Learning Environment (CLE) is an interactive portal designed to support the learning and research activities of the Naval Postgraduate School and its strategic partners. It is built on the open source learning management system Sakai CLE. Sakai was and continues to be developed by a consortium of higher education institutions to better meet the academic and research needs of the higher education community.</p>
+
+<p>Click <a href="https://wiki.nps.edu/display/SakaiCLE" target="_blank"> here</a> for CLE help and support.</p>
+</div>
+
+                </p>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-dark text-white py-3">
+        <div class="container">
+            <div class="footer-details">
+                <ul class="nav footer-links">
+                    <li class="nav-item"><a href="http://www.nps.edu/Footer/ContactUs.html">Contacts</a></li>
+                    <li class="nav-item"><a href="http://www.nps.edu/About/Jobs/Jobs.html">Employment</a></li>
+                    <li class="nav-item"><a href="http://www.nps.edu/Footer/Accessibility.html">Accessibility</a></li>
+                    <li class="nav-item"><a href="http://www.nps.edu/Footer/PrivacyPolicy.html">Privacy Policy</a></li>
+                    <li class="nav-item"><a href="http://www.nps.edu/Footer/FOIA.html">FOIA</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+
