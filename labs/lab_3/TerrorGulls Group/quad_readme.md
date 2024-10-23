@@ -15,13 +15,13 @@
 - Time on Target Required: 
 - Laser Frequency:
 - Recharge Time:
-- Energy Storage:
-- Max detection range: 
-- Min detection range:
+- Number of batteries:
+- Max detection range: Beyond Visual Range (BVR)
+- Max engagement distance: 2 NM
 - Min engagement distance: 
 
 # Stakeholder Requirements
-- How many targets are expected?
+- Optimial engagement distance
 - 
 -
 -
