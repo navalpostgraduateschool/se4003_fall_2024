@@ -30,9 +30,9 @@
 
 | **Stakeholder Questions**    | **Description**                          |
 |-----------------------------|-------------------------------------------|
-| **<div align="center">1</div>**         | <div align="center">How many shots can be fired before cool down is needed?</div> |
-| **<div align="center">2</div>**           | <div align="center">What is the recharge time?</div>          |
-| **<div align="center">3</div>**  | <div align="center">How much time is needed to recharge the batteries?</div>       |
-| **<div align="center">4</div>**            | <div align="center">How much time is need to cool down the laser?</div>             |
+| **<div align="center">1</div>**         |How many shots can be fired before cool down is needed? |
+| **<div align="center">2</div>**           | What is the recharge time?         |
+| **<div align="center">3</div>**  | How much time is needed to recharge the batteries?      |
+| **<div align="center">4</div>**            | How much time is need to cool down the laser?            |
 
 
