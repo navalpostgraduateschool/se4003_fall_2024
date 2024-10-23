@@ -6,11 +6,15 @@
 
 # Quad Specifications
 - Avg Size:
+- Avg Weight:
 - Avg Speed:
 - Avg Endurance:
-- Laser Power Required:
-- Laser Time Required:
 
+# Laser Specifications
+- Power Required:
+- Time on Target Required:
+- Laser Frequency:
+- Recharge Time:
 
 # Stakeholder Requirements
 - 
