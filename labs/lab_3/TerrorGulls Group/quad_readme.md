@@ -12,14 +12,13 @@
 
 # Laser Specifications
 - Power Required:
-- Time on Target Required:
+- Time on Target Required: 
 - Laser Frequency:
 - Recharge Time:
-- Min Engagement Dist:
 - Energy Storage: 
 
 # Stakeholder Requirements
 - How many targets are expected?
-- 
+- What is the min engagement distance?
 -
 -
