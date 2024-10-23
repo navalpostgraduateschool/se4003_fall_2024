@@ -11,14 +11,14 @@
 - Flight Ceiling: 1,200 ft (max)
 
 # Laser Specifications
-- Power Required: 
-- Time on Target Required: 
-- Laser Frequency:
+- Size limitations:
+- Power Required: 100 kw 
+- Time on Target Required: 6 seconds
 - Recharge Time:
-- Number of batteries:
+- Number of batteries: 70 kg of Li
 - Max detection range: Beyond Visual Range (BVR)
 - Max engagement distance: 2 NM
-- Min engagement distance: 
+- Min engagement distance: 100 meters
 
 # Stakeholder Requirements
 - Optimial engagement distance
