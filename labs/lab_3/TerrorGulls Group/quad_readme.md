@@ -1,7 +1,7 @@
 # Terror Gulls
 
 ### Team members
-- Scrum master: Joe Bahleda
+- Scrum Master: Joe Bahleda
 - Domain Expert: Miron Lev
 - Developers: George Gilbert
 - Verifier/ Testers: Bahleda, Lev, Gilbert
