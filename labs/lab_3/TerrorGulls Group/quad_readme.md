@@ -28,11 +28,11 @@
 | **Min Engagement Distance**  | <div align="center">100 meters</div>      |
 
 
-### Stakeholder Requirements
-- How many shots can be fired before cool down is needed?
-- What is the recharge time?
-- How much time is needed to recharge the batteries?
-- How much time is need to cool down the laser?
-- 
--
--
+| **Stakeholder Questions**    | **Description**                          |
+|-----------------------------|-------------------------------------------|
+| **<div align="center">1</div>**         | <div align="center">How many shots can be fired before cool down is needed?</div> |
+| **<div align="center">2</div>**           | <div align="center">What is the recharge time?</div>          |
+| **<div align="center">3</div>**  | <div align="center">How much time is needed to recharge the batteries?</div>       |
+| **<div align="center">4</div>**            | <div align="center">How much time is need to cool down the laser?</div>             |
+
+
