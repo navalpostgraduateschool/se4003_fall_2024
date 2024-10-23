@@ -11,14 +11,17 @@
 - Flight Ceiling: 1,200 ft (max)
 
 # Laser Specifications
-- Power Required:
+- Power Required: 
 - Time on Target Required: 
 - Laser Frequency:
 - Recharge Time:
-- Energy Storage: 
+- Energy Storage:
+- Max detection range: 
+- Min detection range:
+- Min engagement distance: 
 
 # Stakeholder Requirements
 - How many targets are expected?
-- What is the min engagement distance?
+- 
 -
 -
