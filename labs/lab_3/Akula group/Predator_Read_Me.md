@@ -7,18 +7,15 @@
 ## Specs
 | Specification    | Details                                                                                       |
 |-------------------|-----------------------------------------------------------------------------------------------|
-| **Laser Power**   | 100 kW to 300 kW (higher for drones with heat-resistant or reflective coatings)             |
-| **Dwell Time**    | 10 to 15 seconds to effectively disable the drone                                           |
-| **Size**          | Not explicitly stated; typically large due to power generation, energy storage, and cooling needs |
-| **Range**         | Effectiveness decreases with distance; higher power required for longer ranges               |
-| **Targeting**     | Focus on critical areas:                                                                    |
-|                   | - Sensitive electronics                                                                       |
-|                   | - Engines                                                                                     |
-|                   | - Fuel tanks                                                                                  |
-|                   | - Wings or body (to disrupt aerodynamics)                                                    |
-| **Examples**      | - **Helios Laser System**: 60 kW, effective against small/medium drones (1-2 km range)     |
-|                   | - **ATHENA**: 30 kW fiber laser; higher power (100 kW) for larger drones (10 seconds)       |
-|                   | - **LWSD**: 150 kW, designed for larger drones; 10-15 seconds to engage                      |
+| **Operational Range**   | Approximately 1,150 nautical miles (about 2,130 km)             |
+| **Loiter Time**    | Up to 27 hours                                                                    |
+| **Altitude**          | Up to 50,000 feet (15,240 meters)                                      |
+| **Speed**         | Cruise speed of around 130 knots (approximately 150 mph or 240 km/h)                        |
+| **Size**          | - **Length** 36 feet 1 inch (11.0 meters)                                                   |
+|                   | - **Wingspan** 66 feet (20.1 meters)                                                        |
+|                   | - **Height** 12 feet 4 inches (3.76 meters)                                                 |
+|                   | - Fuel tanks                                                                                |
+
 
 
 ## Remaining Questions
