@@ -29,7 +29,10 @@
 
 
 ### Stakeholder Requirements
-- Optimial engagement distance
+- How many shots can be fired before cool down is needed?
+- What is the recharge time?
+- How much time is needed to recharge the batteries?
+- How much time is need to cool down the laser?
 - 
 -
 -
