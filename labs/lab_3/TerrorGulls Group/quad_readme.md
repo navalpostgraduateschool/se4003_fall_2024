@@ -11,7 +11,7 @@
 - Flight Ceiling: 1,200 ft (max)
 
 # Laser Specifications
-- Size limitations:
+- System Footprint: 5 m x 2.5 m x 2.5 m
 - Power Required: 100 kw 
 - Time on Target Required: 6 seconds
 - Recharge Time:
