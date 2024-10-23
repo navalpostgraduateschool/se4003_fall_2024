@@ -7,7 +7,7 @@
 | **Developers**               | George Gilbert                            |
 | **Verifier/ Testers**        | Bahleda, Lev, Gilbert                     |
 
-| **Quad Specifications**      | **Description**                                           |
+| **Quad Specifications**      | **Description**                          |
 |-----------------------------|-------------------------------------------|
 | **Class**                    | Class I, II                               |
 | **Size**                     | 27 in x 27 in (min)                       |
