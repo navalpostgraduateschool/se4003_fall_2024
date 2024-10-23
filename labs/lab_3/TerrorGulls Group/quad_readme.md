@@ -15,6 +15,8 @@
 - Time on Target Required:
 - Laser Frequency:
 - Recharge Time:
+- Min Engagement Dist:
+- Energy Storage: 
 
 # Stakeholder Requirements
 - 
