@@ -5,10 +5,10 @@
 - Verifier/ Testers: Bahleda, Lev, Gilbert
 
 # Quad Specifications
-- Avg Size:
-- Avg Weight:
-- Avg Speed:
-- Avg Endurance:
+- Size: 27 in x 27 in (min)/ 67 in x 67 in (max)
+- Avg Weight: 10 lbs
+- Speed: 56 mph (max)
+- Flight Ceiling: 1,200 ft (max)
 
 # Laser Specifications
 - Power Required:
@@ -19,6 +19,7 @@
 - Energy Storage: 
 
 # Stakeholder Requirements
+- How many targets are expected?
 - 
 -
 -
