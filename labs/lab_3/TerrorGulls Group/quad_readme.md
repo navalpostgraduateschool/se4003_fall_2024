@@ -1,2 +1,3 @@
 # Team members
-- Scrum master: 
+- Scrum master: Joe Bahleda
+- 
