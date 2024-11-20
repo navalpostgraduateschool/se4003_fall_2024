@@ -1,4 +1,4 @@
-classdef DBLaserA < Laser
+classdef DBLaserA < DBLaserAbstract
     % LaserA subclass with specific properties
 
     properties
