@@ -10,9 +10,9 @@ laserChoice = 'LaserB';  % Set to 'LaserA' or 'LaserB' for testing
 % Dynamically create the laser object based on the laserChoice string
 switch laserChoice
     case 'LaserA'
-        laserObj = eval('LaserA');  % Dynamically create instance of LaserA
+        laserObj = DBLaserA();  % Dynamically create instance of LaserA
     case 'LaserB'
-        laserObj = eval('LaserB');  % Dynamically create instance of LaserB
+        laserObj = DBLaserA();  % Dynamically create instance of LaserB
     otherwise
         error('Invalid laser choice. Please select either LaserA or LaserB.');
 end

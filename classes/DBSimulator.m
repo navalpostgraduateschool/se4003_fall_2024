@@ -1,4 +1,4 @@
-classdef duckBlindSimulator < handle
+classdef DBSimulator < handle
     properties
         swarmController   % Instance of the swarm controller (nested class)
         laserController   % Instance of the laser controller
