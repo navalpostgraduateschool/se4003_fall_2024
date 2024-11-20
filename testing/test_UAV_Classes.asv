@@ -2,30 +2,29 @@
 
 function didPass = test_UAV_Classes()
     clc
-    didPass = false;
+    didPass =
 
-    try
+try
 
-        % Here is the stuff we will try and run
+    % Here is the stuff we will try and run
 
-        % Create a predator object and a quad copter object
-        predObj = DBPredator([1, 1], 2, 100);
-
-
-        % quadObj = DBQuad([2, 2], 1.5, 100); % Position = [2, 2], MaxVelocity = 1.5, Armor = 100
+    % Create a predator object and a quad copter object
+    predObj = DBPredator([1, 1], 2, 100);
 
 
-        quadObj = DBQuad([], 1.5); % Position = [2, 2], MaxVelocity = 1.5, Armor = 100
+    quadObj = DBQuad([2, 2], 1.5, 100); % Position = [2, 2], MaxVelocity = 1.5, Armor = 100
 
 
-        disp('UAV Success');
-        didPass = true;
+    quadObj = DBQuad([], 1.5); % Position = [2, 2], MaxVelocity = 1.5, Armor = 100
 
-    catch me
-        % if something went wrong above, we will be down here in the program
-        disp('UAV Fail');
 
-    end
+    disp('Success');
+
+catch me
+    % if something went wrong above, we will be down here in the program
+    disp('Fail');
+
+end
 
 end
 
