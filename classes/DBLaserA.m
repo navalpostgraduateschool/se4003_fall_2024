@@ -1,5 +1,5 @@
 classdef LaserA < Laser
-    % Laser A subclass with specific properties
+    % LaserA subclass with specific properties
 
     properties
         OutputPower = 60;    % in kW
@@ -8,5 +8,23 @@ classdef LaserA < Laser
         DischargeRate = 1;    % in seconds
         NumBatteries = 3;     % number of batteries
         Range = 5;            % in km
+    end
+
+    methods
+        % Override the fire method to implement specific firing behavior for LaserA
+        function fire(obj)
+            disp('Laser A firing...');
+            % Example: Update the marker position or perform a firing animation
+            obj.markerHandle.XData = obj.markerHandle.XData + 1;  % Move marker as an example
+            obj.markerHandle.YData = obj.markerHandle.YData + 1;  % Move marker as an example
+        end
+        
+        % Override the follow method to implement specific following behavior for LaserA
+        function follow(obj, targetX, targetY)
+            disp(['Laser A following target at: (', num2str(targetX), ', ', num2str(targetY), ')']);
+            % Example: Update the marker's position to follow the target
+            obj.markerHandle.XData = targetX;
+            obj.markerHandle.YData = targetY;
+        end
     end
 end
