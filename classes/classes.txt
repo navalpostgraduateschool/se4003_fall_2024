@@ -1,0 +1,1 @@
+Class files should be prefixed with DB to indicate the Duck Blind namespace used in this application.

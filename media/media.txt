@@ -1,0 +1,1 @@
+Place images, video, fonts, and other media related items in this folder.

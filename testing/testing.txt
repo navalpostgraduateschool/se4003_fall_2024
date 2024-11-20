@@ -1,0 +1,1 @@
+Test scripts and functions should be placed in this folder.  Each test should be able to run independently without requiring other scripts to be run first.

@@ -1,0 +1,1 @@
+Helper files that support the main application should be placed in this folder.
