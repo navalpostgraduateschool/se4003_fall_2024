@@ -1,4 +1,4 @@
-classdef (Abstract) Laser
+classdef (Abstract) DBLaserAbstract
     % Abstract class for Laser with common properties
 
     properties (Abstract)
