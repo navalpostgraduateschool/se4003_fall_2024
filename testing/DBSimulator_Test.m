@@ -8,7 +8,7 @@ disp('Starting test for DBSimulator...');
 
 % Step 1: Create a mock laser controller as a struct and GUI axes
 disp('Creating mock laser controller and GUI axes...');
-laserController = createLaserController(); % Function to create the mock laser controller
+laserController = DBLaserController(); % Function to create the mock laser controller
 figureHandle = figure('Name', 'Test GUI', 'NumberTitle', 'off'); % Create a test figure
 axisHandle = axes(figureHandle); % Create test axes in the figure
 
