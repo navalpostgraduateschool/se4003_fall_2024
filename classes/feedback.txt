@@ -1,0 +1,52 @@
+General feedback
+A. Naming conventions
+1.  Classes (names and their filename) should use title camel case, like "CamelCase".
+2.  Classes (files that start with classdef <ClassName>) should be prefixed with 'DB', 
+for example "DBCamelCase"
+We are using DB as our namespace to avoid collision with other, external classes that
+we may wish to use at some point.  Seeing DB<classname>.m is a way for us to quickly
+recognize which classes belong to us.  For example, we want to have a Predator class, but
+if we use another library or collection of UAV classes, that also have a Predator class
+then we need to make sure the right one is being used.  If not, we run into 
+difficult bugs to work through where we try editing one file and not seeing the effects
+or getting undefined behavior.
+3. Other files that are not classes, should not have the DB prefix and should not use
+a leading capitol letter.  For example, "some_script.m" or "someScript.m"
+4.  We will not put 'Abstract' or 'A' in the name of abstract classes.
+5.  Classes that inherit from an abstract class will have the abstract class name followed by
+the subclass name.  For example if we have new laser model 'GE1200', it would be
+'DBLaserGE1200' - DB for the namespace of our code, Laser for the parent class, and
+GE1200 for the subclass.
+
+B. Class inheritence
+1.  Created a base class for all classes called DBBase which inherits from handle.
+This base class has properties for tracking an axes and text area.  it also has methods
+for logging information to the console and to the text area.  It has an abstract method
+getDescription which all concrete subclasses must implement.  This provides some programattic
+documentation for the classes.
+
+@Miron - The DBLaserController needs to be a class.  You created a script that mimicked
+what the controller should be doing.  The script is actually a good way to go for testing
+the two laser classes we have, but it is incomplete for an actual controller in terms
+of the model-view-controller architecture we are going for with this application.
+See the updated DBLaserController.m that I created and follow-up with me during/after class
+to make sure it makes sense and if it is clearer what we are doing with it; and why we
+would design like this.  I moved your version to testing/test_lasers.m and put it
+in the teting/ folder.
+
+@Miron and Bobby - I renamed the DBLaserAbstract class to DBLaser (see notes above) and
+refactored the code to use the updated class name.
+
+Todo - Create two legitimate laser classes.  Look up the specs on two directed energy weapons and put them in here.
+
+
+@Jake - The initAxes method needed to create an axes (and figure) if one did not exist.
+One option is to use gca (get current axes).  A downside with gca is that if an axes does
+exist, it will be used, which you may not want.  It could write over something else.  On
+the other hand, you may not want to have things being created over and over again each 
+time initAxes is called.  Check out the auxiliar/initAxes method and let me know if the
+chanages make sense.
+
+
+
+A.  Classes h

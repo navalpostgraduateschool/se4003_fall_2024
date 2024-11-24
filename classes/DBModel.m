@@ -1,0 +1,2 @@
+classdef DBModel < DBBase
+end
