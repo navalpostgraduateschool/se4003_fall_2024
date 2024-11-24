@@ -1,4 +1,8 @@
 function axesH = initAxes(axesH)
+    if ~nargin || isempty(axesH)
+        axesH = gca;
+    end
+    
     % Access the UIAxes component and update its properties
     axesH.XLabel.String = '';  % Remove X label
     axesH.YLabel.String = '';  % Remove Y label

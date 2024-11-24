@@ -1,5 +1,14 @@
-classdef DBLaserB < DBLaserAbstract
+classdef DBLaserB < DBLaser
     % LaserB subclass with specific properties
+    properties(Constant)
+        LINE_PROPERTIES = struct('color','blue',...
+            'linestyle','none',...
+            'marker', 'v',...
+            'markerSize', 10,...
+            'markerFaceColor', 'blue',...
+            'xdata',0,...
+            'ydata',0);
+    end
 
     properties
         OutputPower = 100;   % in kW
@@ -27,4 +36,10 @@ classdef DBLaserB < DBLaserAbstract
             obj.markerHandle.YData = targetY;
         end
     end
+
+    methods(Static)
+        function description = getDescription()
+            description = 'Laser model B';
+        end
+    end    
 end

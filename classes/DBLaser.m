@@ -1,4 +1,4 @@
-classdef (Abstract) DBLaserAbstract
+classdef (Abstract) DBLaser < DBModelWithGraphic
     % Abstract class for Laser with common properties
 
     properties (Abstract)
@@ -10,9 +10,10 @@ classdef (Abstract) DBLaserAbstract
         Range             % Range of the laser (km)
     end
 
-    properties
-        axHandle          % Handle for the axis in GUI
-        markerHandle      % Handle for the marker in GUI
+    properties 
+        % These exist in the parent class
+        % axesH         % Handle for the axis in GUI
+        % lineH         % Handle for the marker in GUI
     end
 
     methods
@@ -34,8 +35,8 @@ classdef (Abstract) DBLaserAbstract
         
         % Method to set axis and marker handle
         function setHandles(obj, ax, marker)
-            obj.axHandle = ax;
-            obj.markerHandle = marker;
+            obj.axesH = ax;
+            obj.lineH = marker;
         end
         
         % Fire method (abstract for subclasses to define)

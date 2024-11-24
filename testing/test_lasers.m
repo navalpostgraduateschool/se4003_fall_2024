@@ -6,9 +6,9 @@ laserChoice = 'LaserB';  % Set 'LaserA' or 'LaserB' here to select laser type
 % Dynamically create the laser object based on the laserChoice string
 switch laserChoice
     case 'LaserA'
-        laserObj = eval('LaserA');  % Dynamically create instance of LaserA
+        laserObj = DBLaserA();  % Dynamically create instance of LaserA
     case 'LaserB'
-        laserObj = eval('LaserB');  % Dynamically create instance of LaserB
+        laserObj = DBLaserB();  % Dynamically create instance of LaserB
     otherwise
         error('Invalid laser choice. Please select either LaserA or LaserB.');
 end
@@ -28,10 +28,8 @@ laserMarker = plot(ax, 10, 10, 'ro', 'MarkerSize', 10, 'MarkerFaceColor', 'r'); 
 % Set the handles in the laser object
 laserObj.setHandles(ax, laserMarker);
 
-% Example of updating the laser marker position in the GUI
-% (In real applications, this could be based on laser firing or moving)
-laserObj.markerHandle.XData = 15;  % Move marker to (15, 10)
-laserObj.markerHandle.YData = 15;  % Move marker to (15, 15)
+% Example: Fire the laser
+laserObj.fire();
 
-% Display a message indicating the laser position has changed
-disp('Laser position updated in GUI.');
+% Example: Follow a target position
+laserObj.follow(15, 15);  % Move to (15, 15)
