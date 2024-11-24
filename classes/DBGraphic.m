@@ -42,7 +42,7 @@ classdef DBGraphic < DBBase
                 % this.figureH = getParentFigure(this.axesH);
 
                 didSet = true;
-                if ~ishandle(this.lineH)
+                if isempty(this.lineH) || ~ishandle(this.lineH)
                     this.createLine();
                 else
                     set(this.lineH, 'parent', this.axesH);

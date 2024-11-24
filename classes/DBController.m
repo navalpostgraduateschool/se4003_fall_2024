@@ -17,6 +17,20 @@ classdef DBController < DBBase
 
         end
 
+        function didSet = setConstructorArguments(this, varargin)
+            didSetClass = false;
+            didSetBase = false;
+            for n=1:numel(varargin)
+                argIn = varargin{n};
+                if isa(argIn, 'matlab.graphics.axis.Axes')
+                    didSetClass = didSetClass || this.setAxesHandle(argIn);
+                else
+                    didSetBase = setConstructorArguments@DBBase(this, argIn) || didSetBase;
+                end            
+            end
+            didSet = didSetClass && didSetBase;
+        end
+
         % overload this method to initialize as appropriate.
         function didInit = initModel(this)
             didInit = false;
