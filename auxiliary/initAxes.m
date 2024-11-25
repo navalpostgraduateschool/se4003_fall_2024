@@ -2,6 +2,11 @@ function axesH = initAxes(axesH)
     if ~nargin || isempty(axesH)
         axesH = gca;
     end
+
+    limits = [-100,100];
+    xlim(axesH, limits);
+    ylim(axesH, limits);
+    
     
     % Access the UIAxes component and update its properties
     axesH.XLabel.String = '';  % Remove X label

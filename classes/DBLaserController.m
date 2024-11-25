@@ -1,5 +1,9 @@
 classdef DBLaserController < DBController
-    properties
+    properties(Constant)
+        SUPPORTED_LASERS = {
+            'A';
+            'B';
+            };
     end
 
     methods

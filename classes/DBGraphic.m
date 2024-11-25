@@ -1,14 +1,33 @@
 classdef DBGraphic < DBBase
     properties(Abstract, Constant)
         LINE_PROPERTIES; % struct containing line properties that can be used when initilizing the line handle
-
     end
+    
     properties(SetAccess=private)
         lineH;
         axesH;
     end
     
+    methods(Static)
+
+        function isIt = isValidHandle(h)
+            isIt = ~isempty(h) && ishandle(h);
+        end
+    end
+    
     methods
+
+        function show(this)
+            if this.isValidHandle(this.lineH)
+                set(this.lineH,'visible','on');
+            end
+        end
+
+        function hide(this)
+            if this.isValidHandle(this.lineH)
+                set(this.lineH,'visible','off');
+            end
+        end
 
         function didSet = setConstructorArguments(this, varargin)
             didSetClass = false;

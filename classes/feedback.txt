@@ -18,12 +18,21 @@ the subclass name.  For example if we have new laser model 'GE1200', it would be
 'DBLaserGE1200' - DB for the namespace of our code, Laser for the parent class, and
 GE1200 for the subclass.
 
-B. Class inheritence
+B. Classes for the model view controller architecture
+Base classes:
 1.  Created a base class for all classes called DBBase which inherits from handle.
 This base class has properties for tracking an axes and text area.  it also has methods
 for logging information to the console and to the text area.  It has an abstract method
 getDescription which all concrete subclasses must implement.  This provides some programattic
 documentation for the classes.
+2.  Created a DBGraphic class - this will contain an axes handle and a line handle that
+will hold the graphic item.  Classes that inherit this must define the LINE_PROPERTIES constant 
+which contains the line handle properties for the class.  It also has methods
+for setting the axes handle and creating the line handle with the properties given.
+3.  DBModelWithGraphic - these are models that have an associated line handle - specficially the 
+laser and drone classes.
+
+
 
 @Miron - The DBLaserController needs to be a class.  You created a script that mimicked
 what the controller should be doing.  The script is actually a good way to go for testing
@@ -48,5 +57,34 @@ time initAxes is called.  Check out the auxiliar/initAxes method and let me know
 chanages make sense.
 
 
+@UAV team -> @Drone team
 
+Renamed DBUAVA --> DBDrone.... DBDrone now inherits DBModelWithGraphic
+DBPredator --> DBDronePredator  ... inherits DBDrone
+DBQuad --> DBDroneQuad   ... inherits DBDrone
+
+The Drone class --> maxVelocity was a property, but changed to velocity. It can be changed, but won't go
+above MAX_SPEED.
+
+MaxSpeed -->  MAX_VELOCITY.  It is a constant so all caps here.  
+
+update()  --> we only need one update method in this case, which can be done in the base class as the 
+quad and predator classes will do the same thing, but just have their properties used instead, and this
+happens automatically.
+
+
+DBUAV_Engine --> DBDronesController
+Note:  This need to be subclassed.  I subclassed it as a DBController
+axes is a keyword in matlab, so it shouldn't be used as a variable name.  and it wasn't
+however Axes was, and it is too close to the keyword.  It has been removed since we don't use it anyway.
+Also, we don't name properties the same as the classes.  The classes are the instructions that will be 
+used to create our objects.  
+DBPredator (now DBDronePredator) is code that will create/insantiate a predator object (class instance).
+
+
+
+@Siddiq - I changed the abstract UAV class to DBDrone, becausde it was 
+too much alphabet soup for me otherwise.  It inherits from the DBModelWithGraphic class.
+
+@Siddiq
 A.  Classes h

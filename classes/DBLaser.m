@@ -10,7 +10,8 @@ classdef (Abstract) DBLaser < DBModelWithGraphic
         Range             % Range of the laser (km)
     end
 
-    properties 
+    properties (SetAccess=protected)
+
         % These exist in the parent class
         % axesH         % Handle for the axis in GUI
         % lineH         % Handle for the marker in GUI
@@ -22,6 +23,14 @@ classdef (Abstract) DBLaser < DBModelWithGraphic
         %     % Implementation to fire laser
         % end
         
+         function syncGraphic(this)
+            if this.armor>0
+                this.show();
+            else
+                this.hide();
+            end
+         end
+
         % A general method to display laser details
         function displayLaserDetails(obj)
             disp('Laser Specifications:');
