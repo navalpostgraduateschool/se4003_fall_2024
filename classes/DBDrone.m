@@ -1,8 +1,13 @@
 classdef (Abstract) DBDrone < DBModelWithGraphic
     properties(SetAccess=protected)
-        position = [0,0]; % UAV position as [x, y]
+        % position = [0,0]; % UAV position as [x, y] - this exists in the DBModelWithGraphic class
         velocity = 0;% Maximum velocity magnitude
+        heading_deg;
         armor % UAV armor level (e.g., 0-100)
+        status = 'unset';  % can be 'unset', 'ready', 'loiter','inactive','active','success','destroyed','dead','available'
+        showHeading;
+        destination;  % position the drone is flying to.  Bearing is updated with the destination.
+        heading_h;  % maybe show a line for the direction the drone is going?
     end
     
     properties (Abstract, Constant)
@@ -23,22 +28,38 @@ classdef (Abstract) DBDrone < DBModelWithGraphic
             end
         end
 
-        function didInit = init(obj, initPos, initVelocity)
+        function isIt = isAlive(this)
+            isIt = this.armor > 0;
+        end
+
+        function didInit = init(obj, initPos, initTarget, initVelocity, readyStatus)
             obj.armor = obj.MAX_ARMOR;
             obj.velocity = 0;
             if nargin>1
-                obj.position = initPos;
+                obj.setPosition(initPos);  % obj.position = initPos;
                 if nargin > 2
-                    obj.velocity = initVelocity;
+                    obj.setDestination(initTarget);
+                    if nargin>3
+                        obj.velocity = initVelocity;
+                    end
                 end
             end
+
+            if nargin<5
+                if obj.velocity == 0
+                    readyStatus = 'avilable';
+                else
+                    readyStatus = 'active';
+                end
+            end
+            obj.status = readyStatus;
             didInit = true;
         end
-        
-        function setPosition(this, pos)
-            this.position = pos;
-        end
 
+        function isIt = isTargetable(this)
+            isIt = any(strcmpi(this.status,{'active','ready','loiter'}));
+        end
+        
         function didSet = setVelocity(this, vel)
             didSet = false;
             if vel>=0 && vel<= this.MAX_VELOCITY
@@ -47,12 +68,72 @@ classdef (Abstract) DBDrone < DBModelWithGraphic
             end
         end
 
-        function update(obj, dt, velocity)
-            % Ensure the velocity does not exceed MaxVelocity
-            if norm(velocity) > obj.MAX_SPEED
-                velocity = (velocity / norm(velocity)) * obj.MAX_SPEED;
-            end
-            obj.position = obj.position + velocity * dt;
+        function cur_heading = updateHeading(obj)
+            % Calculate the differences in x and y
+            cur_heading = calcHeading(obj.position, obj.destination);
+            obj.heading_deg = cur_heading;
         end
+
+        function update(obj)
+            if obj.isAlive()
+                obj.updateHeading();
+                obj.updatePosition();
+                obj.syncGraphic();
+            end
+        end
+
+        % function update(obj, dt, velocity)
+        %     % Ensure the velocity does not exceed MaxVelocity
+        %     if norm(velocity) > obj.MAX_SPEED
+        %         velocity = (velocity / norm(velocity)) * obj.MAX_SPEED;
+        %     end
+        %     obj.position = obj.position + velocity * dt;
+        % end
+
+        function updatePosition(obj)
+            % Conversion
+            time_multiplier = 10; % Speed up the simulation by this factor
+            nm_per_second = obj.velocity; % (obj.speed_nmh / 3600) * time_multiplier; 
+            fps = 10;
+            distance_per_frame = nm_per_second / fps;
+
+            % Convert heading to radians
+            heading_rad = obj.heading_deg * pi / 180;
+
+            % Calculate dx and dy from heading
+            dx = cos(heading_rad);
+            dy = sin(heading_rad);
+            dx_dy = [dx, dy];
+            
+            obj.position = obj.position + distance_per_frame*dx_dy;
+
+        end
+
+        function showPath(obj, shouldShow)
+            obj.showHeading = shouldShow;
+            obj.updateDisplay;
+        end
+
+
+        % Sets the max velocity toward the destination given
+        % if not destination coordiantes are given (x,y) then the current
+        % destination coordinates are used
+        % If the destination coordinates are provided, then the destination
+        % property will be updated with these.  You are responsible for
+        % keeping track of the last location.
+
+        % function updateVelocityToDestination(this, destCoord)
+        %     if nargin > 1
+        %         this.setDestination(destCoord)
+        %     end
+        % end
+
+
+        function didSet = setDestination(this, destCoord)
+            this.destination = destCoord;
+            didSet = true;
+        end
+
+        
     end
 end

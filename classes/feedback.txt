@@ -20,7 +20,7 @@ GE1200 for the subclass.
 
 B. Classes for the model view controller architecture
 Base classes:
-1.  Created a base class for all classes called DBBase which inherits from handle.
+1.  Created a base class (DBBase) for all classes called DBBase which inherits from handle.
 This base class has properties for tracking an axes and text area.  it also has methods
 for logging information to the console and to the text area.  It has an abstract method
 getDescription which all concrete subclasses must implement.  This provides some programattic
@@ -29,8 +29,11 @@ documentation for the classes.
 will hold the graphic item.  Classes that inherit this must define the LINE_PROPERTIES constant 
 which contains the line handle properties for the class.  It also has methods
 for setting the axes handle and creating the line handle with the properties given.
-3.  DBModelWithGraphic - these are models that have an associated line handle - specficially the 
+3.  DBModel - class for our models (e.g. laser, drone)
+4.  DBModelWithGraphic - these are models that have an associated line handle - specficially the 
 laser and drone classes.
+5.  DBController - class for our controllers, specifically the model controllers.  These
+will serve as the interface between the view and the model.
 
 
 
@@ -81,6 +84,12 @@ Also, we don't name properties the same as the classes.  The classes are the ins
 used to create our objects.  
 DBPredator (now DBDronePredator) is code that will create/insantiate a predator object (class instance).
 
+The run method is cool, however it does too much.  We need to give a lot of the control that
+is in this method to the simulation engine.  Instead, we will have a simpler 'update' method
+for the drone controller class that will be simpler.  The controller is going to be responsible
+for instructing the drones to launch and giving them their heading.  It will also keep track
+of the status of the drones so we can know when to stop and how well the drones and the laser
+did (i.e. statistics)
 
 
 @Siddiq - I changed the abstract UAV class to DBDrone, becausde it was 
@@ -88,3 +97,22 @@ too much alphabet soup for me otherwise.  It inherits from the DBModelWithGraphi
 
 @Siddiq
 A.  Classes h
+
+
+@Simulator team - Hank and Jake
+DBSimulator < handle  -->  DBSimulator < DBController
+updated the constructor - so it does not take a laser controller as input.  apart from 
+the axis handle and the text/log handle, this class is going to be responsible for 
+creating the laser and swarm controllers which will, in turn, be responsible for creating
+the laser and drones.
+duckBlindSimulator --> DBSimulator
+
+Question:  What was meant by "nested class" (below)
+properties
+    axis_handle:  This exists as axesH in the DBController, so we don't need it here; we already have it as axesH
+    swarmController --> dronesController  ("nested class"?  Not sure what this phrase meant in the comments.
+
+Question: The following is from chatGPT, but you can't leave this here, we need
+to have the previously provided code still.  
+% Other methods (initializeSwarmController, run, etc.)
+% Remain the same as previously provided

@@ -5,28 +5,31 @@ classdef DBLaserA < DBLaser
             'linestyle','none',...
             'marker', 'v',...
             'markerSize', 10,...
-            'markerFaceColor', 'blue',...
+            'markerFaceColor', [0.2 0.4 0.8],...
+            'markerEdgeColor', [0.8, 0.8 0.8],...
             'xdata',0,...
             'ydata',0);
     end
 
-    properties
-        OutputPower = 60;    % in kW
-        ChargeTime = 10;      % in seconds
-        Wavelength = 1.07;    % in micrometers
-        DischargeRate = 1;    % in seconds
-        NumBatteries = 3;     % number of batteries
-        Range = 5;            % in km
+    properties(SetAccess=protected)
+        outputPower = 60;    % in kW
+        chargeTime = 10;      % in seconds
+        wavelength = 1.07;    % in micrometers
+        dischargeRate = 1;    % in seconds
+        numBatteries = 3;     % number of batteries
+        maxRange = 50;        % in km
+        maxTemperature = 80;  % in celsius
+        coolDownRate = 20;
     end
 
     methods
         % Override the fire method to implement specific firing behavior for LaserA
-        function fire(obj)
-            disp('Laser A firing...');
-            % Example: Update the marker position or perform a firing animation
-            obj.markerHandle.XData = obj.markerHandle.XData + 1;  % Move marker as an example
-            obj.markerHandle.YData = obj.markerHandle.YData + 1;  % Move marker as an example
-        end
+        % function fire(obj)
+        %     disp('Laser A firing...');
+        %     % Example: Update the marker position or perform a firing animation
+        %     obj.markerHandle.XData = obj.markerHandle.XData + 1;  % Move marker as an example
+        %     obj.markerHandle.YData = obj.markerHandle.YData + 1;  % Move marker as an example
+        % end
         
         % Override the follow method to implement specific following behavior for LaserA
         function follow(obj, targetX, targetY)

@@ -9,7 +9,7 @@ classdef (Abstract) DBBase < handle
 
         function obj = DBBase(varargin)
             obj.setConstructorArguments(varargin{:});
-         end
+        end
 
         function didSet = setConstructorArguments(obj, varargin)
             didSet = false;
@@ -30,19 +30,19 @@ classdef (Abstract) DBBase < handle
             end
         end
 
-
         function logError(this, me, varargin)
             showME(me);
             this.log(varargin{:})
         end
 
         function log(this, msgTxt, varargin)
-            if ishandle(this.logH)
+            if nargin>2
+                if ishandle(this.logH)
 
-            else
-                this.logConsole(msgTxt, varargin{:});
+                else
+                    this.logConsole(msgTxt, varargin{:});
+                end
             end
-
         end
     end
 

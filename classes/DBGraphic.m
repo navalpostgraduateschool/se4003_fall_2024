@@ -55,6 +55,14 @@ classdef DBGraphic < DBBase
 
         end
 
+        function delete(this)
+
+            if this.isValidHandle(this.lineH)
+                delete(this.lineH);
+            end
+            this.delete@DBBase();
+        end
+        
         function didSet = setAxesHandle(this, axesH)
             if isa(axesH, 'matlab.graphics.axis.Axes')
                 this.axesH = axesH;

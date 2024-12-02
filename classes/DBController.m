@@ -6,6 +6,10 @@ classdef DBController < DBBase
         panelH;  % if it controls a panel
     end
 
+    properties
+        initPosition = [nan, nan];
+    end
+
     methods
 
         function obj = DBController(varargin)
@@ -14,9 +18,27 @@ classdef DBController < DBBase
 
             % create model as necessary;
             obj.initModel();
-
         end
 
+        function pos = getPosition(this)
+            model = this.getModel();
+            pos = [nan, nan];
+            if ~isempty(pos)
+                pos = model.getPosition();
+            end
+        end
+
+        function didSet = setPosition(this, modelPos)
+            model = this.getModel();
+            didSet = false;
+            if ~isempty(model)
+                if numel(model)>1
+                    didSet = all(arrayfun(@(m)(m.setPosition(modelPos)), model,'UniformOutput',true));
+                else
+                    didSet = model.setPosition(modelPos);
+                end
+            end
+        end
         function didSet = setConstructorArguments(this, varargin)
             didSetClass = false;
             didSetBase = false;
