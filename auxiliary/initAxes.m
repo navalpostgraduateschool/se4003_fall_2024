@@ -36,7 +36,10 @@ function axesH = initAxes(axesH, x_limits, y_limits, optionalProps)
     axesH.LineWidth = 2;  % Optional: make the border thicker
 
     if nargin>3
-        set(axesH, optionalProps);
+        try
+            set(axesH, optionalProps);
+        catch me
+        end
     end
     
 end

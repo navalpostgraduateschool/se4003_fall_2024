@@ -1,5 +1,9 @@
 classdef (Abstract) DBLaser < DBModelWithGraphic
     % Abstract class for Laser with common properties
+    events
+        DBLasing
+    end
+
     properties(Constant)
 
     end
@@ -21,7 +25,6 @@ classdef (Abstract) DBLaser < DBModelWithGraphic
         powerAvailable = 100;
         laserOn = false;
         lastUpdateTimestamp; % time stamp of last update
-        
 
         % These exist in the parent class
         % axesH         % Handle for the axis in GUI
@@ -47,7 +50,7 @@ classdef (Abstract) DBLaser < DBModelWithGraphic
 
         function obj = DBLaser(varargin)
             obj.setConstructorArguments(varargin{:});
-         end
+        end
 
         function canIt = canItFire(this)
             canIt = this.powerAvailable>0 && this.temperature<=this.maxTemperature;
@@ -76,15 +79,15 @@ classdef (Abstract) DBLaser < DBModelWithGraphic
         
         % Fire method (abstract for subclasses to define)
         function fire(obj, droneOrTarget, duration_s)
+            obj.turnOn();
+
             if isa(droneOrTarget,'DBDrone')
                 target = droneOrTarget.position;
+                obj.notify('DBLasing', DBLasedOnEvt(droneOrTarget, obj));
             else
-                target = droneOrTarget;
+                target = droneOrTarget;                
             end
-
-            % This is a placeholder for subclasses to implement firing behavior
-            % This could involve updating the marker, reducing energy, etc.
-            obj.turnOn();
+            
             set(obj.laseH,'xdata',[target(1), obj.position(1)],'ydata',[target(2), obj.position(2)],'visible','on');
             if nargin>2
                 pause(duration_s);
@@ -99,10 +102,8 @@ classdef (Abstract) DBLaser < DBModelWithGraphic
             disp(['Laser following target at position: (', num2str(targetX), ', ', num2str(targetY), ')']);
         end
 
-        function update(this)
-            
+        function update(this)            
             timeSinceLastUpdate
-
         end
 
         function reset(obj)

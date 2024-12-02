@@ -32,6 +32,23 @@ classdef (Abstract) DBDrone < DBModelWithGraphic
             isIt = this.armor > 0;
         end
 
+
+        function lasingDamageCb(this, damageEvt)
+            lase_dur_sec = damageEvt.duration_sec;
+            laserObj = damageEvt.laserObj;
+            damage = laserObj.outputPower*lase_dur_sec;
+            this.armor = this.armor - damage;
+            if this.armor<=0
+                this.die()
+            end
+        end
+
+        function die(this)
+            this.status = 'dead';
+            this.hide();
+        end
+
+
         function didInit = init(obj, initPos, initTarget, initVelocity, readyStatus)
             obj.armor = obj.MAX_ARMOR;
             obj.velocity = 0;
@@ -114,7 +131,6 @@ classdef (Abstract) DBDrone < DBModelWithGraphic
             obj.updateDisplay;
         end
 
-
         % Sets the max velocity toward the destination given
         % if not destination coordiantes are given (x,y) then the current
         % destination coordinates are used
@@ -128,12 +144,10 @@ classdef (Abstract) DBDrone < DBModelWithGraphic
         %     end
         % end
 
-
         function didSet = setDestination(this, destCoord)
             this.destination = destCoord;
             didSet = true;
         end
-
         
     end
 end

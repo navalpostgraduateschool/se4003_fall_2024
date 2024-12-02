@@ -36,9 +36,17 @@ classdef DBSimulator < DBController
             this.dronesController.initPosition = top_right;
             this.dronesController.setPosition(top_right);
 
+            addlistener(this.laserController,'DBLasing',@this.lasingCb);
             % or
             % 
             % this.dronesController.reset();
+        end
+
+        function lasingCb(this, laserCtrl, lasingEvt)
+            % this logging data to go here
+            % this.logConsole('lasing event received');
+            droneObj = lasingEvt.droneObj;
+            droneObj.lasingDamageCb(lasingEvt);
         end
 
         function reset(this)

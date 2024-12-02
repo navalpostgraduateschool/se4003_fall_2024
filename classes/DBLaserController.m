@@ -1,4 +1,7 @@
 classdef DBLaserController < DBController
+    events
+        DBLasing;
+    end
     properties(Constant)
         SUPPORTED_LASERS = {
             'A';
@@ -91,7 +94,7 @@ classdef DBLaserController < DBController
             didSet = this.setModel(laserObjOrType);
         end
 
-        function distances=  getDistanceToDrones(this, drones)
+        function distances = getDistanceToDrones(this, drones)
 
             % distances = inf(size(drones));
             laserPos = this.getPosition();
@@ -171,10 +174,10 @@ classdef DBLaserController < DBController
                         delete(curModel);
                     end
 
+                    tmpLaser.addlistener('DBLasing',@this.lasingCb);
                     tmpLaser.setAxesHandle(this.axesH);
                     tmpLaser.setPosition(laserPos);
 
-                    
                     this.modelObj = tmpLaser;
                     didSet = true;
                 end
@@ -182,6 +185,10 @@ classdef DBLaserController < DBController
             catch me
                 this.logError(me);
             end
+        end
+
+        function lasingCb(this, laserObj, lasedEvt)
+            this.notify('DBLasing',lasedEvt);
         end
 
         % function blah(this)
