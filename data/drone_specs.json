@@ -1,0 +1,48 @@
+{
+  "PredatorDrone": {
+    "Name": "General Atomics MQ-1 Predator",
+    "Description": "A medium-altitude, long-endurance unmanned aerial vehicle primarily used for reconnaissance and light attack missions.",
+    "MaxSpeed": {
+      "min": 84,
+      "max": 135,
+      "unit": "mph",
+      "source": "https://www.af.mil/About-Us/Fact-Sheets/Display/article/104469/mq-1b-predator/"
+    },
+    "Material": {
+      "description": "1/4\" aircraft-grade aluminum, such as 6061 or 7075 aluminum alloys",
+      "source": "https://klsin.bpmsg.com/how-fast-can-a-quadcopter-fly/"
+    },
+    "LaserBurnThroughTime": {
+      "minTime_seconds": 10,
+      "maxTime_seconds": 5,
+      "laserPower_kW": {
+        "min": 15,
+        "max": 50
+      },
+      "source": "https://www.defensenews.com"
+    }
+  },
+  "QuadCopter": {
+    "Name": "Average Off-the-Shelf Quadcopter",
+    "Description": "A consumer-grade drone designed for recreational use, typically featuring lightweight construction and moderate speed capabilities.",
+    "MaxSpeed": {
+      "min": 15,
+      "max": 50,
+      "unit": "mph",
+      "source": "https://droneller.com/blog/how-fast-can-drones-fly/"
+    },
+    "Material": {
+      "description": "Lightweight materials like plastic, carbon fiber, and aluminum components",
+      "source": "https://dronesgator.com/what-are-drones-made-of/"
+    },
+    "LaserBurnThroughTime": {
+      "minTime_seconds": 3,
+      "maxTime_seconds": 1,
+      "laserPower_kW": {
+        "min": 15,
+        "max": 50
+      },
+      "source": "https://interestingengineering.com/innovation/anti-drone-high-energy-laser-kawasaki"
+    }
+  }
+}
