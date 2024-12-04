@@ -76,6 +76,7 @@ classdef (Abstract) DBLaser < DBModelWithGraphic
             obj.laserOn = 0;
             set(obj.laseH,'visible','off');
         end
+
         
         % Fire method (abstract for subclasses to define)
         function fire(obj, droneOrTarget, duration_s)
