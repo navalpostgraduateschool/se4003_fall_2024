@@ -105,6 +105,17 @@ classdef DBSimulator < DBController
             end
         end
 
+        function update(this)
+            activeDrones = this.getTargetableDrones();
+            % if numel(activeDrones)>0
+            %     disp(numel(activeDrones));
+            % end
+            this.laserController.update(activeDrones);
+            this.dronesController.update();
+            this.environment.update();
+        end
+        
+
         function drones = getTargetableDrones(this, laserCtrl, dronesCtrl)
             if nargin<3
                 dronesCtrl = this.dronesController;
@@ -121,15 +132,6 @@ classdef DBSimulator < DBController
             drones = dronesCtrl.drones(targetableIdx);            
         end
 
-        function update(this)
-            activeDrones = this.getTargetableDrones();
-            % if numel(activeDrones)>0
-            %     disp(numel(activeDrones));
-            % end
-            this.laserController.update(activeDrones);
-            this.dronesController.update();
-            this.environment.update();
-        end
     end
 
     methods(Static)
