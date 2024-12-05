@@ -11,6 +11,8 @@
             color: #f0f0f0; /* Light gray text */
             margin: 0;
             padding: 0;
+            position: relative;
+            min-height: 100vh; /* Ensure full page height */
         }
         header {
             background-color: #013220; /* Dark green header */
@@ -41,45 +43,52 @@
         header .icon-right {
             right: 10px; /* Align icon on the right */
         }
-        .button {
-            display: block; /* Makes the button sit on its own line */
-            margin: 10px auto; /* Center the button horizontally */
-            background-color: #9acd32; /* Olive green button */
-            color: #013220; /* Dark green text */
-            border: none;
-            padding: 10px 20px;
-            font-size: 1rem;
-            cursor: pointer;
-            text-decoration: none; /* Ensure text looks like a button */
-            border-radius: 5px;
-            text-align: center;
+        .container {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px 5%;
+            align-items: flex-start;
         }
-        .button:hover {
-            background-color: #76b041; /* Slightly lighter green for hover effect */
-        }
-        main {
+        .box {
+            width: 30%; /* Equal width for all three boxes */
+            background-color: #013220; /* Dark green background for the boxes */
+            color: #f0f0f0;
             padding: 20px;
+            border: 2px solid #9acd32; /* Olive green border */
+            border-radius: 10px;
         }
-        section {
-            margin-bottom: 20px;
-        }
-        section h2 {
-            color: #9acd32; /* Olive green for headings */
-        }
-        .team-member {
+        .box h2 {
+            color: #9acd32;
             margin-bottom: 15px;
         }
-        .team-member strong {
-            color: #9acd32; /* Highlight team member names in olive green */
+        .box p {
+            margin: 0;
         }
-        footer {
-            background-color: #013220;
-            color: #f0f0f0;
+        .box a {
+            color: #9acd32;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .box a:hover {
+            text-decoration: underline;
+        }
+        .install-button {
+            display: block;
+            width: 100%; /* Match the width of the box */
+            margin: 10px auto 0 auto;
+            background-color: #9acd32;
+            color: #000; /* Ensure font color is black */
             text-align: center;
-            padding: 10px 0;
-            position: relative;
-            bottom: 0;
-            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            font-weight: bold;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        .install-button:hover {
+            background-color: #76b041;
         }
     </style>
 </head>
@@ -96,60 +105,64 @@
         <img src="Images/duckIcon.jpg" alt="Duck Icon" class="icon-right">
     </header>
 
-    <!-- Install button -->
-    <a href="docs/for_distribution/DuckBlind3000.exe" class="button">Click Here to Install DuckBlind 3000</a>
-    
-    <main>
-        <section>
+    <div class="container">
+        <!-- About the Project Box -->
+        <div class="box">
             <h2>About the Project</h2>
             <p>
-                Our project is focused on developing a cutting-edge laser controller capable of detecting and neutralizing drones. This technology is designed to provide enhanced security and defense capabilities.
+                Our project is focused on developing a cutting-edge laser controller capable of detecting and neutralizing drones. This technology is designed to provide enhanced security and defense capabilities. The controller aids US Naval vessels in tracking, targeting, and eliminating drone threats.
             </p>
-        </section>
-        <section>
-            <h2>How It Works</h2>
+		</p>
+Disclaimer:
+
+This project was created strictly for academic purposes as part of a coursework assignment. All data, scenarios, and references presented in this project are entirely fictitious and do not reflect any real-world applications, events, or organizations. The project is intended solely for educational use to demonstrate technical and conceptual skills.
+
+Any resemblance to actual events, entities, or individuals is purely coincidental. This project and its contents hold no practical or operational value in real-world scenarios. Use or application of this project outside of its academic context is neither endorsed nor recommended.
+		</p>
+        </div>
+
+        <!-- For Developers Box -->
+        <div class="box">
+            <h2>For Developers</h2>
             <p>
-                The system integrates advanced targeting algorithms with high-precision laser technology to identify and disable drones with pinpoint accuracy.
+                Explore our project repository on GitHub for source code, documentation, and developer resources.
             </p>
-        </section>
-        <section>
-    <h2>Team Members</h2>
-    <div class="team-member">
-        <strong>Professor Moore:</strong> The brains behind the project, he directed and ensured the project stayed on track, on time, and on target.
-    </div>
-    <div class="team-member">
-        <strong>Myron:</strong> Built the test scripts and ran calculations to deliver a target based on distance and conditions.
-    </div>
-    <div class="team-member">
-        <strong>Siddiq:</strong> Method builder and drone researcher.
-    </div>
-    <div class="team-member">
-        <strong>Bobby:</strong> Developed the code to measure laser temperature.
-    </div>
-    <div class="team-member">
-        <strong>Joe:</strong> He’s in the Navy.
-    </div>
-    <div class="team-member">
-        <strong>Steve:</strong> If a software development team had a cheerleader, this would be him.
-    </div>
-    <div class="team-member">
-        <strong>Jake:</strong> GUI engineer and puzzle-solving master who edited and tied all the code together.
-    </div>
-    <div class="team-member">
-        <strong>Hank:</strong> Not really sure what he did, but the website looks great!
-    </div>
-    <div class="team-member">
-        <strong>ChatGPT:</strong> The digital collaborator who provided coding assistance, refined content, and offered endless enthusiasm and support to help bring the project to life.
-    </div>
-</section>
-        </section>
-    </main>
+            <a href="https://github.com/navalpostgraduateschool/se4003_fall_2024" target="_blank">Visit our GitHub Page</a>
+            <!-- Install Button -->
+            <a href="docs/for_distribution/DuckBlind3000.exe" class="install-button">Click Here to Install DuckBlind 3000</a>
+        </div>
 
-    <!-- GitHub button at the bottom -->
-    <a href="https://github.com/navalpostgraduateschool/se4003_fall_2024" target="_blank" class="button">Visit our GitHub page!</a>
-
-    <footer>
-        <p>&copy; 2024 Drone Defense Team | All Rights Reserved</p>
-    </footer>
+        <!-- Team Members Box -->
+        <div class="box">
+            <h2>Team Members</h2>
+            <div class="team-member">
+                <strong>Professor Moore:</strong> The brains behind the project, he directed and ensured the project stayed on track, on time, and on target.
+            </div>
+            <div class="team-member">
+                <strong>Myron:</strong> Built the test scripts and ran calculations to deliver a target based on distance and conditions.
+            </div>
+            <div class="team-member">
+                <strong>Siddiq:</strong> Method builder and drone researcher.
+            </div>
+            <div class="team-member">
+                <strong>Bobby:</strong> Developed the code to measure laser temperature.
+            </div>
+            <div class="team-member">
+                <strong>Joe:</strong> He’s in the Navy.
+            </div>
+            <div class="team-member">
+                <strong>Steve:</strong> If a software development team had a cheerleader, this would describe his contribution.
+            </div>
+            <div class="team-member">
+                <strong>Jake:</strong> GUI engineer and puzzle-solving master who edited and tied all the code together.
+            </div>
+            <div class="team-member">
+                <strong>Hank:</strong> Not really sure what he did, but the website looks great!
+            </div>
+            <div class="team-member">
+                <strong>ChatGPT:</strong> The digital collaborator who provided coding assistance, refined content, and offered endless enthusiasm and support to help bring the project to life.
+            </div>
+        </div>
+    </div>
 </body>
 </html>
