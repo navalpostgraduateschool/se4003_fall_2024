@@ -125,3 +125,31 @@ classdef (Abstract) DBLaser < DBModelWithGraphic
     end
 end
 
+function T1 = updateTemp(obj, dt) 
+
+            % Calculates the temperature at t1 given dt, temperature, and Power 
+
+            % dt = t1 - temperature in seconds 
+
+            % temperature: Initial temperature in °F 
+
+            % R: Thermal resistance (fixed) 
+
+            % C: Thermal capacitance (fixed) 
+
+            % outputPower: Laser power in W 
+
+             R = 0.05;
+
+             C = 200; 
+
+
+            % Compute the temperature change based on power output 
+
+            T1 = obj.temperature + (obj.outputPower * R * (1 - exp(-dt / (R * C)))); 
+
+        end 
+
+    end 
+
+end 
