@@ -2,11 +2,11 @@ classdef DBDroneFromJSON < DBDrone
     properties
         JSONSourceFile % Path to the JSON file
         DroneLabel % The root-level label in the JSON for this drone
-        MAX_VELOCITY % Maximum velocity (dynamic)
+        MaxSpeed % Dynamically loaded max speed from JSON
     end
     
     properties (Constant)
-        MAX_ARMOR = 100; % Default armor value
+        MAX_VELOCITY = 0; % Keep this as a constant to match the parent class definition
     end
     
     methods
@@ -36,7 +36,7 @@ classdef DBDroneFromJSON < DBDrone
             
             % Assign properties
             if isfield(droneData, 'MaxSpeed')
-                obj.MAX_VELOCITY = droneData.MaxSpeed.max; % Use max speed
+                obj.MaxSpeed = droneData.MaxSpeed.max; % Store max speed in a new property
             end
             if isfield(droneData, 'Material')
                 disp('Material information:');
