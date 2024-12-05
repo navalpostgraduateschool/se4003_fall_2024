@@ -4,10 +4,11 @@ classdef (ConstructOnLoad) DBLasedOnEvt < event.EventData
        laserObj
        duration_sec
        timeStamp
+       inducedPower
    end
 
    methods
-       function data = DBLasedOnEvt(droneObj, laserObj, duration_sec, varargin)
+       function data = DBLasedOnEvt(droneObj, laserObj, duration_sec, varargin,inducedPower)
           data.droneObj = droneObj;
           data.duration_sec = 1/20;
           if nargin>1
