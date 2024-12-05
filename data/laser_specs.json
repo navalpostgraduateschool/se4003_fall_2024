@@ -12,6 +12,7 @@
       "Name": " Directed Energy Interceptor for Maneuver Short-Range Air Defense System (DEIMOS) system",
       "Power_Output": "50 kW",
       "Range": "Classified",
+      "Max Operating Temp": "Classified",
       "Fire_Rate": "Continuous laser",
       "Reference": "https://news.lockheedmartin.com/2023-01-23-Lockheed-Martin-Achieves-First-Light-In-Latest-Laser-Lab-Demonstration?_gl=1*1bqmlej*_gcl_au*NTc3NzI0NTYxLjE3MzMzNTExNjc."
     }
