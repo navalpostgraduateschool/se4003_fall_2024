@@ -41,7 +41,7 @@
         header .icon-right {
             right: 10px; /* Align icon on the right */
         }
-        .install-button {
+        .button {
             display: block; /* Makes the button sit on its own line */
             margin: 10px auto; /* Center the button horizontally */
             background-color: #9acd32; /* Olive green button */
@@ -54,7 +54,7 @@
             border-radius: 5px;
             text-align: center;
         }
-        .install-button:hover {
+        .button:hover {
             background-color: #76b041; /* Slightly lighter green for hover effect */
         }
         main {
@@ -66,11 +66,11 @@
         section h2 {
             color: #9acd32; /* Olive green for headings */
         }
-        img {
-            max-width: 100%;
-            height: auto;
-            border: 2px solid #013220; /* Green border for images */
-            margin-bottom: 10px;
+        .team-member {
+            margin-bottom: 15px;
+        }
+        .team-member strong {
+            color: #9acd32; /* Highlight team member names in olive green */
         }
         footer {
             background-color: #013220;
@@ -97,8 +97,8 @@
     </header>
 
     <!-- Install button -->
-    <a href="distribution/duckblind3000.exe" class="install-button">Click Here to Install DuckBlind 3000</a>
-
+    <a href="docs/for_distribution/DuckBlind3000.exe" class="button">Click Here to Install DuckBlind 3000</a>
+    
     <main>
         <section>
             <h2>About the Project</h2>
@@ -111,15 +111,43 @@
             <p>
                 The system integrates advanced targeting algorithms with high-precision laser technology to identify and disable drones with pinpoint accuracy.
             </p>
-            
         </section>
         <section>
-            <h2>Team Members</h2>
-            <p>
-                Our team consists of dedicated engineers, programmers, and defense specialists committed to delivering innovative solutions.
-            </p>
+    <h2>Team Members</h2>
+    <div class="team-member">
+        <strong>Professor Moore:</strong> The brains behind the project, he directed and ensured the project stayed on track, on time, and on target.
+    </div>
+    <div class="team-member">
+        <strong>Myron:</strong> Built the test scripts and ran calculations to deliver a target based on distance and conditions.
+    </div>
+    <div class="team-member">
+        <strong>Siddiq:</strong> Method builder and drone researcher.
+    </div>
+    <div class="team-member">
+        <strong>Bobby:</strong> Developed the code to measure laser temperature.
+    </div>
+    <div class="team-member">
+        <strong>Joe:</strong> He’s in the Navy.
+    </div>
+    <div class="team-member">
+        <strong>Steve:</strong> If a software development team had a cheerleader, this would be him.
+    </div>
+    <div class="team-member">
+        <strong>Jake:</strong> GUI engineer and puzzle-solving master who edited and tied all the code together.
+    </div>
+    <div class="team-member">
+        <strong>Hank:</strong> Not really sure what he did, but the website looks great!
+    </div>
+    <div class="team-member">
+        <strong>ChatGPT:</strong> The digital collaborator who provided coding assistance, refined content, and offered endless enthusiasm and support to help bring the project to life.
+    </div>
+</section>
         </section>
     </main>
+
+    <!-- GitHub button at the bottom -->
+    <a href="https://github.com/navalpostgraduateschool/se4003_fall_2024" target="_blank" class="button">Visit our GitHub page!</a>
+
     <footer>
         <p>&copy; 2024 Drone Defense Team | All Rights Reserved</p>
     </footer>
