@@ -1,4 +1,7 @@
 classdef (Abstract) DBDrone < DBModelWithGraphic
+    events
+        DroneKilledEvt;
+    end
     properties(SetAccess=protected)
         % position = [0,0]; % UAV position as [x, y] - this exists in the DBModelWithGraphic class
         velocity = 0;% Maximum velocity magnitude
@@ -46,6 +49,7 @@ classdef (Abstract) DBDrone < DBModelWithGraphic
         function die(this)
             this.status = 'dead';
             this.hide();
+            this.notify('DroneKilledEvt');
         end
 
 

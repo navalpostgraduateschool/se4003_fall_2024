@@ -1,4 +1,9 @@
 classdef DBSimulator < DBController
+    events
+        
+        
+    end
+
     properties
         env_width;  
         env_height;

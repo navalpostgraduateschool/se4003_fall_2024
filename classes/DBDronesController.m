@@ -1,4 +1,7 @@
 classdef DBDronesController < DBController
+    events
+       DroneKilledEvt
+    end
 
     properties(Constant)
         SUPPORTED_DRONES = {
@@ -160,9 +163,14 @@ classdef DBDronesController < DBController
                     this.drones(n) = droneClass(this.axesH, this.logH);
                     start_location = this.location+(n-1)*locationOffset;
                     this.drones(n).init(start_location, this.destination, initVelocity, initStatus);
+                    this.drones(n).addlistener('DroneKilledEvt', @this.droneKilledCb);
                 end
                 didInit = this.setModel(this.drones);
             end
+        end
+
+        function droneKilledCb(this, droneObj, evt)
+            this.notify('DroneKilledEvt');
         end
 
         function update(this)
