@@ -6,7 +6,17 @@ classdef DBDroneFromJSON < DBDrone
     end
     
     properties (Constant)
-        MAX_VELOCITY = 0; % Keep this as a constant to match the parent class definition
+        LINE_PROPERTIES = struct('color','green',...
+            'linestyle','none',...
+            'marker', 'v',...
+            'markerSize', 12,...  % Size = 100; % Marker size for visualization
+            'markerFaceColor', [0.2, 0.8, 0],...
+            'markerEdgeColor', [0.1, 0.1 0.1],...
+            'xdata',0,...
+            'ydata',0);
+
+        MAX_ARMOR = 100;
+        MAX_VELOCITY = 1000; % Keep this as a constant to match the parent class definition
     end
     
     methods
@@ -50,5 +60,11 @@ classdef DBDroneFromJSON < DBDrone
             % Initialize armor
             obj.armor = obj.MAX_ARMOR;
         end
+    end
+      methods(Static)
+        function description = getDescription()
+            description = 'Custom Drone';
+        end
+
     end
 end
