@@ -69,6 +69,10 @@ classdef DBSimulator < DBController
             didSet = this.laserController.setLaserType(laserType);
         end
 
+        function didSet = setLaserPosition(this, pos)
+            didSet = this.laserController.setPosition(pos);
+        end
+
         % Determines if the simulation is done
         function isIt = isDone(this)
             % is done when the laser is dead - never happen
@@ -82,21 +86,30 @@ classdef DBSimulator < DBController
             end
         end
 
-        function demo_run(this, numSeconds)
+        function demo_run(this, numSeconds, laserType, droneType, numDrones)
             fps = 20;
+            if nargin<5
+                numDrones = 5;
+            end
+            if nargin<4
+                droneType = 'quad copter';
+            end
+            if nargin< 3
+                laserType = 'a';
+            end
             if nargin<2 || isempty(numSeconds)
                 numSeconds = 10;
             end
+
             numIterations = fps*numSeconds;
             this.reset();
-            drone_start_pos = [30, 30];
-            laser_location = [-15, -15];
+            drone_start_pos = [50, 30];
+            laser_location = [-2, 0];
             start_velocity = 5;
 
-            laserType = 'a';
             this.setLaserType(laserType);
-            droneType = 'quad copter';
-            this.dronesController.initModel(drone_start_pos, laser_location, start_velocity,droneType);
+            this.setLaserPosition(laser_location);
+            this.dronesController.initModel(drone_start_pos, laser_location, start_velocity,droneType, numDrones);
 
             dt = 1/fps;
             for n=1:numIterations

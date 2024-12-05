@@ -158,9 +158,9 @@ classdef DBLaserController < DBController
                     tmpLaser = laserObjOrType;
                 elseif isa(laserObjOrType,'char')
                     switch lower(laserObjOrType)
-                        case {'lasera','a'}
+                        case {'lasera','a', 'laser a'}
                             tmpLaser = DBLaserA(this.axesH, this.logH);
-                        case {'laserb','b'}
+                        case {'laserb','b','laser b'}
                             tmpLaser = DBLaserB(this.axesH, this.logH);
                         otherwise
                             throw(MException('LaserController:InvalidLaser:Unrecognized','Unrecognized laser type provided: %s', laserObjOrType));

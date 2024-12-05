@@ -113,8 +113,11 @@ classdef DBDronesController < DBController
             isIt = this.getNumRemaining()==0;
         end
 
-        function didInit = initModel(this, location, target, start_velocity, droneTypeIn)
+        function didInit = initModel(this, location, target, start_velocity, droneTypeIn, numDrones)
             didInit = false;
+            if nargin>5
+                this.setNumDrones(numDrones);
+            end
             if nargin>4
                 this.setDroneType(droneTypeIn);
             end
