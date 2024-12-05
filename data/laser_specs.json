@@ -1,35 +1,60 @@
 {
-  "DirectedEnergyWeapons": [
-    {
-<<<<<<< Updated upstream
-      "Name": "HELIOS",
-      "Power_Output": "60+ kW",
-      "Range": "5-10 NM",
-      "Max Operating Temp": "1700 F",
-      "Fire_Rate": "Continuous",
-      "Reference": "https://www.lockheedmartin.com/content/dam/lockheed-martin/rms/documents/directed-energy/Product_Card_HELIOS_2024_V3.pdf"
+    "HELIOS": {
+      "Name": "High Energy Laser and Integrated Optical-dazzler with Surveillance (HELIOS)",
+      "Description": "A high-energy laser weapon system designed for maritime use, capable of countering unmanned aerial systems and small boats.",
+      "PowerOutput": {
+        "min": 20,
+        "max": 80,
+        "unit": "kW",
+        "source": "https://www.lockheedmartin.com/content/dam/lockheed-martin/rms/documents/directed-energy/Product_Card_HELIOS_2024_V3.pdf"
+      },
+      "Range": {
+        "min": 5,
+        "max": 10,
+        "unit": "NM",
+        "source": "https://www.lockheedmartin.com/content/dam/lockheed-martin/rms/documents/directed-energy/Product_Card_HELIOS_2024_V3.pdf"
+      },
+      "Material": {
+        "description": "High-strength components designed to handle extreme temperatures and stresses in maritime environments",
+        "source": "https://www.lockheedmartin.com"
+      },
+      "LaserBurnThroughTime": {
+        "minTime_seconds": 3,
+        "maxTime_seconds": 1,
+        "laserPower_kW": {
+          "min": 15,
+          "max": 80
+        },
+        "source": "https://www.lockheedmartin.com/content/dam/lockheed-martin/rms/documents/directed-energy/Product_Card_HELIOS_2024_V3.pdf"
+      }
     },
-    {
-      "Name": " Directed Energy Interceptor for Maneuver Short-Range Air Defense System (DEIMOS) system",
-      "Power_Output": "50 kW",
-      "Range": "Classified",
-      "Max Operating Temp": "Classified",
-      "Fire_Rate": "Continuous laser",
-      "Reference": "https://news.lockheedmartin.com/2023-01-23-Lockheed-Martin-Achieves-First-Light-In-Latest-Laser-Lab-Demonstration?_gl=1*1bqmlej*_gcl_au*NTc3NzI0NTYxLjE3MzMzNTExNjc."
-=======
-      "name": "HELIOS",
-      "power_output": "60 kW",
-      "range": "5-10 NM",
-      "fire_rate": "Continuous",
-      "reference": "https://www.lockheedmartin.com/content/dam/lockheed-martin/rms/documents/directed-energy/Product_Card_HELIOS_2024_V3.pdf"
-    },
-    {
-      "name": " DEIMOS",
-      "power_output": "50 kW",
-      "range": "Classified",
-      "fire_rate": "Continuous laser",
-      "reference": "https://news.lockheedmartin.com/2023-01-23-Lockheed-Martin-Achieves-First-Light-In-Latest-Laser-Lab-Demonstration?_gl=1*1bqmlej*_gcl_au*NTc3NzI0NTYxLjE3MzMzNTExNjc."
->>>>>>> Stashed changes
+    "DEIMOS": {
+      "Name": "Directed Energy Interceptor for Maneuver Short-Range Air Defense System (DEIMOS)",
+      "Description": "A tactical high-energy laser system designed for maneuver short-range air defense.",
+      "PowerOutput": {
+        "min": 10,
+        "max": 50,
+        "unit": "kW",
+        "source": "https://news.lockheedmartin.com/2023-01-23-Lockheed-Martin-Achieves-First-Light-In-Latest-Laser-Lab-Demonstration?_gl=1*1bqmlej*_gcl_au*NTc3NzI0NTYxLjE3MzMzNTExNjc."
+      },
+      "Range": {
+        "min": 2,
+        "max": 6,
+        "unit": "NM",
+        "source": "https://news.lockheedmartin.com/2023-01-23-Lockheed-Martin-Achieves-First-Light-In-Latest-Laser-Lab-Demonstration?_gl=1*1bqmlej*_gcl_au*NTc3NzI0NTYxLjE3MzMzNTExNjc."
+      },
+      "Material": {
+        "description": "High-strength materials optimized for mobile defense platforms",
+        "source": "https://news.lockheedmartin.com"
+      },
+      "LaserBurnThroughTime": {
+        "minTime_seconds": 5,
+        "maxTime_seconds": 2,
+        "laserPower_kW": {
+          "min": 10,
+          "max": 50
+        },
+        "source": "https://news.lockheedmartin.com/2023-01-23-Lockheed-Martin-Achieves-First-Light-In-Latest-Laser-Lab-Demonstration?_gl=1*1bqmlej*_gcl_au*NTc3NzI0NTYxLjE3MzMzNTExNjc."
+      }
     }
-  ]
 }
