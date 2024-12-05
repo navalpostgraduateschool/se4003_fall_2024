@@ -2,12 +2,11 @@ classdef DBDroneFromJSON < DBDrone
     properties
         JSONSourceFile % Path to the JSON file
         DroneLabel % The root-level label in the JSON for this drone
+        MAX_VELOCITY % Maximum velocity (dynamic)
     end
     
     properties (Constant)
-        % Placeholder constants for the abstract properties in DBDrone
-        MAX_VELOCITY = 0; % Will be set dynamically
-        MAX_ARMOR = 100;  % Default value, override if needed
+        MAX_ARMOR = 100; % Default armor value
     end
     
     methods
@@ -24,12 +23,12 @@ classdef DBDroneFromJSON < DBDrone
             try
                 jsonData = jsondecode(fileread(obj.JSONSourceFile));
             catch ME
-                error("Error reading JSON file: %s", ME.message);
+                error('Error reading JSON file: %s', ME.message);
             end
             
             % Validate label
             if ~isfield(jsonData, obj.DroneLabel)
-                error("Label '%s' not found in JSON file.", obj.DroneLabel);
+                error('Label ''%s'' not found in JSON file.', obj.DroneLabel);
             end
             
             % Extract data for the specified label
@@ -40,17 +39,16 @@ classdef DBDroneFromJSON < DBDrone
                 obj.MAX_VELOCITY = droneData.MaxSpeed.max; % Use max speed
             end
             if isfield(droneData, 'Material')
-                disp("Material information:");
+                disp('Material information:');
                 disp(droneData.Material.description);
             end
             if isfield(droneData, 'LaserBurnThroughTime')
-                disp("Laser burn-through time info:");
+                disp('Laser burn-through time info:');
                 disp(droneData.LaserBurnThroughTime);
             end
-            % Other initializations based on the JSON structure
-            obj.armor = obj.MAX_ARMOR; % Default armor initialization
+            
+            % Initialize armor
+            obj.armor = obj.MAX_ARMOR;
         end
-        
-        % Override abstract properties or methods if necessary
     end
 end
