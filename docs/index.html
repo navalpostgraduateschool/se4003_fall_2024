@@ -41,6 +41,22 @@
         header .icon-right {
             right: 10px; /* Align icon on the right */
         }
+        .install-button {
+            display: block; /* Makes the button sit on its own line */
+            margin: 10px auto; /* Center the button horizontally */
+            background-color: #9acd32; /* Olive green button */
+            color: #013220; /* Dark green text */
+            border: none;
+            padding: 10px 20px;
+            font-size: 1rem;
+            cursor: pointer;
+            text-decoration: none; /* Ensure text looks like a button */
+            border-radius: 5px;
+            text-align: center;
+        }
+        .install-button:hover {
+            background-color: #76b041; /* Slightly lighter green for hover effect */
+        }
         main {
             padding: 20px;
         }
@@ -71,7 +87,7 @@
     <header>
         <!-- Left logo -->
         <img src="Images/Duck_Blind_Logo.jpg" alt="Duck Blind Logo" class="logo-left">
-        
+
         <!-- Center title and subtitle -->
         <h1>Drone Defense Laser Project</h1>
         <p>Operation "DuckBlind"</p>
@@ -79,6 +95,10 @@
         <!-- Right icon -->
         <img src="Images/duckIcon.jpg" alt="Duck Icon" class="icon-right">
     </header>
+
+    <!-- Install button -->
+    <a href="distribution/duckblind3000.exe" class="install-button">Click Here to Install DuckBlind 3000</a>
+
     <main>
         <section>
             <h2>About the Project</h2>
@@ -105,4 +125,3 @@
     </footer>
 </body>
 </html>
-
