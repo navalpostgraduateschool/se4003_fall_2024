@@ -1,18 +1,19 @@
 {
   "DirectedEnergyWeapons": [
     {
-      "name": "HELIOS",
-      "power_output": "60+ kW",
-      "range": "5-10 NM",
-      "fire_rate": "Continuous",
-      "reference": "https://www.lockheedmartin.com/content/dam/lockheed-martin/rms/documents/directed-energy/Product_Card_HELIOS_2024_V3.pdf"
+      "Name": "HELIOS",
+      "Power_Output": "60+ kW",
+      "Range": "5-10 NM",
+      "Max Operating Temp": "1700 F",
+      "Fire_Rate": "Continuous",
+      "Reference": "https://www.lockheedmartin.com/content/dam/lockheed-martin/rms/documents/directed-energy/Product_Card_HELIOS_2024_V3.pdf"
     },
     {
-      "name": " Directed Energy Interceptor for Maneuver Short-Range Air Defense System (DEIMOS) system",
-      "power_output": "50 kW",
-      "range": "Classified",
-      "fire_rate": "Continuous laser",
-      "reference": "https://news.lockheedmartin.com/2023-01-23-Lockheed-Martin-Achieves-First-Light-In-Latest-Laser-Lab-Demonstration?_gl=1*1bqmlej*_gcl_au*NTc3NzI0NTYxLjE3MzMzNTExNjc."
+      "Name": " Directed Energy Interceptor for Maneuver Short-Range Air Defense System (DEIMOS) system",
+      "Power_Output": "50 kW",
+      "Range": "Classified",
+      "Fire_Rate": "Continuous laser",
+      "Reference": "https://news.lockheedmartin.com/2023-01-23-Lockheed-Martin-Achieves-First-Light-In-Latest-Laser-Lab-Demonstration?_gl=1*1bqmlej*_gcl_au*NTc3NzI0NTYxLjE3MzMzNTExNjc."
     }
   ]
 }
