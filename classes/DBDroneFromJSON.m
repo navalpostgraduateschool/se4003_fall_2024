@@ -2,12 +2,21 @@ classdef DBDroneFromJSON < DBDrone
     properties
         JSONSourceFile % Path to the JSON file
         DroneLabel % The root-level label in the JSON for this drone
+        MaxSpeed % Dynamically loaded max speed from JSON
     end
     
     properties (Constant)
-        % Placeholder constants for the abstract properties in DBDrone
-        MAX_VELOCITY = 0; % Will be set dynamically
-        MAX_ARMOR = 100;  % Default value, override if needed
+        LINE_PROPERTIES = struct('color','green',...
+            'linestyle','none',...
+            'marker', 'v',...
+            'markerSize', 12,...  % Size = 100; % Marker size for visualization
+            'markerFaceColor', [0.2, 0.8, 0],...
+            'markerEdgeColor', [0.1, 0.1 0.1],...
+            'xdata',0,...
+            'ydata',0);
+
+        MAX_ARMOR = 100;
+        MAX_VELOCITY = 1000; % Keep this as a constant to match the parent class definition
     end
     
     methods
@@ -24,12 +33,12 @@ classdef DBDroneFromJSON < DBDrone
             try
                 jsonData = jsondecode(fileread(obj.JSONSourceFile));
             catch ME
-                error("Error reading JSON file: %s", ME.message);
+                error('Error reading JSON file: %s', ME.message);
             end
             
             % Validate label
             if ~isfield(jsonData, obj.DroneLabel)
-                error("Label '%s' not found in JSON file.", obj.DroneLabel);
+                error('Label ''%s'' not found in JSON file.', obj.DroneLabel);
             end
             
             % Extract data for the specified label
@@ -37,20 +46,25 @@ classdef DBDroneFromJSON < DBDrone
             
             % Assign properties
             if isfield(droneData, 'MaxSpeed')
-                obj.MAX_VELOCITY = droneData.MaxSpeed.max; % Use max speed
+                obj.MaxSpeed = droneData.MaxSpeed.max; % Store max speed in a new property
             end
             if isfield(droneData, 'Material')
-                disp("Material information:");
+                disp('Material information:');
                 disp(droneData.Material.description);
             end
             if isfield(droneData, 'LaserBurnThroughTime')
-                disp("Laser burn-through time info:");
+                disp('Laser burn-through time info:');
                 disp(droneData.LaserBurnThroughTime);
             end
-            % Other initializations based on the JSON structure
-            obj.armor = obj.MAX_ARMOR; % Default armor initialization
+            
+            % Initialize armor
+            obj.armor = obj.MAX_ARMOR;
         end
-        
-        % Override abstract properties or methods if necessary
+    end
+      methods(Static)
+        function description = getDescription()
+            description = 'Custom Drone';
+        end
+
     end
 end
