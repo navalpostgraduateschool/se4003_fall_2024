@@ -53,13 +53,13 @@ classdef (Abstract) DBLaser < DBModelWithGraphic
         end
 
         function canIt = canItFire(this)
-            canIt = this.powerAvailable>0 && this.temperature<=this.maxTemperature;
+            canIt = this.powerAvailable > 0 && this.temperature <= this.maxTemperature;
         end
 
-        function createLine(this,varargin)
-            laserProps = struct('linestyle','-','linewidth',2,'color','green','visible','off');
+        function createLine(this, varargin)
+            laserProps = struct('linestyle', '-', 'linewidth', 2, 'color', 'green', 'visible', 'off');
             this.createLine@DBModelWithGraphic(varargin{:});
-            this.laseH = line(this.axesH,nan, nan, laserProps);
+            this.laseH = line(this.axesH, nan, nan, laserProps);
         end
 
         % Method to set axis and marker handle
@@ -74,23 +74,24 @@ classdef (Abstract) DBLaser < DBModelWithGraphic
 
         function turnOff(obj)
             obj.laserOn = 0;
-            set(obj.laseH,'visible','off');
+            set(obj.laseH, 'visible', 'off');
         end
 
+        Power = DBpowerdistancecalc(x, y, cond, initialpower);
         
         % Fire method (abstract for subclasses to define)
         function fire(obj, droneOrTarget, duration_s)
             obj.turnOn();
 
-            if isa(droneOrTarget,'DBDrone')
+            if isa(droneOrTarget, 'DBDrone')
                 target = droneOrTarget.position;
                 obj.notify('DBLasing', DBLasedOnEvt(droneOrTarget, obj));
             else
                 target = droneOrTarget;                
             end
             
-            set(obj.laseH,'xdata',[target(1), obj.position(1)],'ydata',[target(2), obj.position(2)],'visible','on');
-            if nargin>2
+            set(obj.laseH, 'xdata', [target(1), obj.position(1)], 'ydata', [target(2), obj.position(2)], 'visible', 'on');
+            if nargin > 2
                 pause(duration_s);
                 obj.turnOff();
             end
@@ -103,7 +104,7 @@ classdef (Abstract) DBLaser < DBModelWithGraphic
             disp(['Laser following target at position: (', num2str(targetX), ', ', num2str(targetY), ')']);
         end
 
-        function update(this)            
+        function update(this)
             timeSinceLastUpdate
         end
 
@@ -112,5 +113,15 @@ classdef (Abstract) DBLaser < DBModelWithGraphic
             obj.temperature = 0;
             obj.powerAvailable = 100;
         end
+
+        % New method to calculate the induced power based on range
+        function powerIn = calculateInducedPower(obj, x, y)
+            % Assuming 'initialpower' is the laser's output power
+            initialpower = obj.outputPower;  % Use the outputPower from the laser object
+            
+            % Call the DBpowerdistancecalc function to compute the induced power
+            powerIn = powerdistancecalc(x, y, 'normal', initialpower);
+        end
     end
 end
+
