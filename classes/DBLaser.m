@@ -1,11 +1,12 @@
 classdef (Abstract) DBLaser < DBModelWithGraphic
     % Abstract class for Laser with common properties
     events
-        DBLasing
+        DBLasingEvt
+        DBLasingOffEvt
     end
 
     properties(Constant)
-
+        
     end
 
     properties (Abstract, SetAccess=protected)
@@ -75,6 +76,7 @@ classdef (Abstract) DBLaser < DBModelWithGraphic
         function turnOff(obj)
             obj.laserOn = 0;
             set(obj.laseH, 'visible', 'off');
+            obj.notify('DBLasingOffEvt');
         end
 
         Power = DBpowerdistancecalc(x, y, cond, initialpower);
@@ -85,7 +87,7 @@ classdef (Abstract) DBLaser < DBModelWithGraphic
 
             if isa(droneOrTarget, 'DBDrone')
                 target = droneOrTarget.position;
-                obj.notify('DBLasing', DBLasedOnEvt(droneOrTarget, obj));
+                obj.notify('DBLasingEvt', DBLasedOnEvt(droneOrTarget, obj));
             else
                 target = droneOrTarget;                
             end
@@ -122,34 +124,43 @@ classdef (Abstract) DBLaser < DBModelWithGraphic
             % Call the DBpowerdistancecalc function to compute the induced power
             powerIn = powerdistancecalc(x, y, 'normal', initialpower);
         end
+
+
+
+        function T1 = updateTemp(obj, dt)
+            % Feedback - the dblaser class broke after this was installed.  we want to hold off pushing code until it works so that it 
+            % does not break things elsewhere that others depend on.  This is why we would also keep a separate branch and then merge them later.
+
+            % The instructions for this were to update the current temperature.
+
+            % Calculates the temperature at t1 given dt, temperature, and Power
+
+            % Incorrect
+            % dt = t1 - temperature in seconds
+            
+            % Correct
+            % dt = t1-t0 in seconds.
+
+            % temperature: Initial temperature in °F
+
+            % R: Thermal resistance (fixed)
+
+            % C: Thermal capacitance (fixed)
+
+            % outputPower: Laser power in W
+
+            R = 0.05;
+
+            C = 200;
+
+
+            % Compute the temperature change based on power output
+
+            T1 = obj.temperature + (obj.outputPower * R * (1 - exp(-dt / (R * C))));
+            obj.temperature = T1;
+
+        end
+
     end
 end
 
-function T1 = updateTemp(obj, dt) 
-
-            % Calculates the temperature at t1 given dt, temperature, and Power 
-
-            % dt = t1 - temperature in seconds 
-
-            % temperature: Initial temperature in °F 
-
-            % R: Thermal resistance (fixed) 
-
-            % C: Thermal capacitance (fixed) 
-
-            % outputPower: Laser power in W 
-
-             R = 0.05;
-
-             C = 200; 
-
-
-            % Compute the temperature change based on power output 
-
-            T1 = obj.temperature + (obj.outputPower * R * (1 - exp(-dt / (R * C)))); 
-
-        end 
-
-    end 
-
-end 

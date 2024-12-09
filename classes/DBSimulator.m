@@ -1,7 +1,8 @@
 classdef DBSimulator < DBController
     events
-        
-        
+        DBDroneKilledEvt;
+        DBLasingEvt;
+        DBLasingOffEvt;
     end
 
     properties
@@ -41,7 +42,9 @@ classdef DBSimulator < DBController
             this.dronesController.initPosition = top_right;
             this.dronesController.setPosition(top_right);
 
-            addlistener(this.laserController,'DBLasing',@this.lasingCb);
+            addlistener(this.laserController,'DBLasingEvt',@this.lasingCb);
+            addlistener(this.laserController,'DBLasingOffEvt',@this.lasingOffCb);            
+            addlistener(this.dronesController, 'DBDroneKilledEvt', @this.droneKilledCb);
             % or
             % 
             % this.dronesController.reset();
@@ -52,6 +55,15 @@ classdef DBSimulator < DBController
             % this.logConsole('lasing event received');
             droneObj = lasingEvt.droneObj;
             droneObj.lasingDamageCb(lasingEvt);
+            this.notify('DBLasingEvt',lasingEvt);
+        end
+
+        function lasingOffCb(this, laserCtrl, lasingEvt)            
+            this.notify('DBLasingOffEvt',lasingEvt);
+        end
+
+        function droneKilledCb(this, droneCtrl, evt)
+            this.notify('DBDroneKilledEvt',evt);
         end
 
         function reset(this)
@@ -68,6 +80,7 @@ classdef DBSimulator < DBController
 
         function didSet = setDroneType(this, droneType)
             didSet = this.dronesController.setDroneType(droneType);
+        
         end
 
         function didSet = setLaserType(this, laserType)
@@ -155,6 +168,10 @@ classdef DBSimulator < DBController
     methods(Static)
         function description = getDescription()
             description = 'Simulation controllor';
+        end
+
+        function droneCats = getSupportedDrones()
+            droneCats = DBDronesController.SUPPORTED_DRONES;
         end
     end
 end

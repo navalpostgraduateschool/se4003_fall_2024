@@ -1,6 +1,6 @@
 classdef (Abstract) DBDrone < DBModelWithGraphic
     events
-        DroneKilledEvt;
+        DBDroneKilledEvt;
     end
     properties(SetAccess=protected)
         % position = [0,0]; % UAV position as [x, y] - this exists in the DBModelWithGraphic class
@@ -35,7 +35,6 @@ classdef (Abstract) DBDrone < DBModelWithGraphic
             isIt = this.armor > 0;
         end
 
-
         function lasingDamageCb(this, damageEvt)
             lase_dur_sec = damageEvt.duration_sec;
             laserObj = damageEvt.laserObj;
@@ -49,9 +48,8 @@ classdef (Abstract) DBDrone < DBModelWithGraphic
         function die(this)
             this.status = 'dead';
             this.hide();
-            this.notify('DroneKilledEvt');
+            this.notify('DBDroneKilledEvt');
         end
-
 
         function didInit = init(obj, initPos, initTarget, initVelocity, readyStatus)
             obj.armor = obj.MAX_ARMOR;
@@ -68,7 +66,7 @@ classdef (Abstract) DBDrone < DBModelWithGraphic
 
             if nargin<5
                 if obj.velocity == 0
-                    readyStatus = 'avilable';
+                    readyStatus = 'available';
                 else
                     readyStatus = 'active';
                 end

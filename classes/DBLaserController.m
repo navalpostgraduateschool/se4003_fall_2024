@@ -1,7 +1,9 @@
 classdef DBLaserController < DBController
     events
-        DBLasing;
+        DBLasingEvt;
+        DBLasingOffEvt;        
     end
+
     properties(Constant)
         SUPPORTED_LASERS = {
             'A';
@@ -174,7 +176,8 @@ classdef DBLaserController < DBController
                         delete(curModel);
                     end
 
-                    tmpLaser.addlistener('DBLasing',@this.lasingCb);
+                    tmpLaser.addlistener('DBLasingEvt',@this.lasingCb);
+                    tmpLaser.addlistener('DBLasingOffEvt',@this.lasingOffCb);
                     tmpLaser.setAxesHandle(this.axesH);
                     tmpLaser.setPosition(laserPos);
 
@@ -188,7 +191,10 @@ classdef DBLaserController < DBController
         end
 
         function lasingCb(this, laserObj, lasedEvt)
-            this.notify('DBLasing',lasedEvt);
+            this.notify('DBLasingEvt',lasedEvt);
+        end
+        function lasingOffCb(this, laserObj, lasedEvt)
+            this.notify('DBLasingOffEvt',lasedEvt);
         end
 
         % function blah(this)
